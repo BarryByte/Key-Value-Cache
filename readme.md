@@ -40,8 +40,14 @@ The goal was to create a cache suitable for resource-constrained environments (l
 
 **Observation:**
 
-When load testing this cache (e.g., using Locust) immediately after starting the server, you might observe a high initial failure rate (e.g., 40-50%) that gradually decreases to near zero over a period of minutes (2-8 minutes in observed tests).
-dc
+When load testing this cache (e.g., using Locust) immediately after starting the server, you might observe a high initial failure rate (e.g., 40-50%) that gradually decreases to near zero over a period of minutes (2-8 minutes in observed tests). If this process stopped and again started it will result to 0 % failure because this time our cache system is **warmed-up** .
+
+> Initial Test result
+![Initial Test result](https://github.com/user-attachments/assets/0f6b2de9-fdd4-4b7d-ba7e-f9119976f178)
+
+> After Warm up : 0 % Failure ( see after 11:44:57 ) 
+![After Warm up](https://github.com/user-attachments/assets/c3f64388-f95f-47a4-9349-4224ca7841e5)
+
 
 **Likely Explanation:**
 
@@ -88,6 +94,10 @@ curl -X GET "http://localhost:7171/get?key=name"
 ```bash
 locust -f locustfile.py --host=http://localhost:7171
 ```
+
+
+![Build and run](https://github.com/user-attachments/assets/77ad7298-834a-4fe9-86b0-eac229b1438f)
+
 
 
 
